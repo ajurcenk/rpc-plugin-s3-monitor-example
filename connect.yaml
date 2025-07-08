@@ -1,0 +1,20 @@
+ input:
+   label: monitor_s3_object
+   aws_s3_object_monitor:
+     credentials:
+        id: <AWS ID>
+        secret: <AWS_SECRET>
+     bucket: <AWS_BUCKET_NAME>
+     region: <AWS_REGION>
+     bookmark_manager:
+        file_path: ./bookmarks.json
+     check_interval_min: 1
+
+ pipeline:
+   processors:
+     - label: format_json
+       mapping: |
+         root = this.format_json()
+output:
+  label: out
+  stdout: {}
