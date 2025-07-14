@@ -627,7 +627,7 @@ class AsyncS3ChangeMonitor:
                     last_modified = obj['LastModified']
                     if last_modified > cutoff_time:
 
-                        aws_obj = AWSKeyObject.from_boto3_response(obj, 'my-data-bucket')
+                        aws_obj = AWSKeyObject.from_boto3_response(obj, self.bucket_name)
                         aws_obj_map = aws_obj.to_dict()
 
                         recent_changes.append(aws_obj_map)
